@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gunners</title>
+    <!-- Aqui estão as 'class' criadas e suas alterções, uma de tamanho e outra de cor-->
+    <style>
+        .imagem{
+            height: 20%;
+            width: 40%;
+        }
+        .one{
+            color: crimson;
+        }
+    </style>
+</head>
+<!--Com o 'style' é possivél modificar o elemento em tamanho, cor e etc-->
+<body style="background-color: rgb(255, 255, 255);">
+    <!--O Comando 'h' permite que se crie um texto, 1 sendo o maior e quanto maior o numero menor será o fonte do texto-->
+    <!--O comando 'br' pula a linha-->
+    <h1>Programação!!</h1><br>
+    <!--O 'p' permite criar um parágrafo-->
+    <p></p>
+    <!--O 'href' permite colocar link de sites para aparecer no nome escrito após o '>'-->
+    <a href="https://www.premierleague.com/"> premier league </a>
+    <!--O comando 'class' permite cria um indentificador, que tem como objetivo alterar o texto ou imagem com possui determinada 'class'-->
+    <h2 class="one">Arsenal</h2>
+    <!--O 'src' permite colocar o link de uma imagem-->
+    <img class="imagem"
+        src="https://placar.abril.com.br/wp-content/uploads/2022/09/D5863110-93FF-49A0-B0A2-7ECF9532AA84.jpeg?quality=70&strip=info&w=1044&h=628&crop=1" 
+        alt="arsenal"><br>
+    <p></p>
+    <h3>Converção da temperatura!!</h3>
+    <!--Botões 'input type number' permite que o valor inserido no input seja somente um número-->
+    <!--O 'placeholder' permite que o que for escrevido entre aspas, apareça dentro do 'input'-->
+    <input type="number" id="temperatura" placeholder="digite a temperatura"><br>
+    <p></p>
+    <!--Quando os 'radio' possuem o mesmo 'name', eles só permitem que um esteja selecionado-->
+    <!--O 'id' é um identificador do elemento, é importante que elementos que futuramente vão ser alterados ou utilizados no script o possuam-->
+    <input id="cf" type="radio" name="tipo">Celsius para Fahrenheit</input><br>
+    <input id="ck" type="radio" name="tipo">Celsius para Kelvin</input><br>
+    <input id="fc" type="radio" name="tipo">Fahrenheit para Celsius</input><br>
+    <input id="fk" type="radio" name="tipo">Fahrenheit para Kelvin</input><br>
+    <input id="kc" type="radio" name="tipo">Kelvin para Celsius</input><br>
+    <input id="kf" type="radio" name="tipo">Kelvin para Fahrenheit</input><br>
+    <p></p>
+    <!--O 'button' é vinculado há um script, que permite que ao clicar nele o script seja acionado-->
+    <button onclick="converte()" style="width: 100px;">Converter</button><br>
+    <p id="resultado">Resultado</p>
+    <h3>Descubra a média!</h3>
+    <button onclick="media()"  style="width: 100px;">Clique aqui!</button>
+    <h3> Maior ou menor de idade?</h3>
+    <button onclick="idade()"  style="width: 100px;">Clique aqui!</button>
+</body>
+</html>
+<script>
+    function media()
+    {
+        //'var' cria um nova variável//
+        // 'prompt' cria um espaço para digtar uma reposta para responder a pergunta em parenteses//
+        var q = prompt("Digite a quantidade de numeros para média!")
+        var resultado, soma = 0
+        // O comando 'for' ira fazer oque está entre parenteses até a condição ser cumprida//
+        for (var i = 1; i <= q; i ++)
+        {
+            soma += Number(prompt("Digite o "+i+"° numero!"))
+        }
+        resultado = soma / q
+        // 'alert' mostra um tela com as informações entre parenteses//
+        alert ("A média é: "+resultado)
+    }
+    function idade()
+    {
+        var seuNome = prompt("Escreva seu nome!")
+        var anoNasc = prompt("Digite o ano de seu nascimento")
+        var idade, anoAtual = 2023
+        idade = anoAtual - anoNasc
+        // O comando 'if' só irá ser realizado se as condições que estiverem entre parenteses estiverem sendo cumpridas// 
+        if (idade >= 18)  
+        {
+            alert("Bem vindo "+seuNome+", neste ano você completa "+idade+" anos, portanto é maior de idade.")  
+        } 
+        //O comando 'else' significa senão. ele vem depois do 'if', é acionado quando a condição de 'if' não é cumprida
+        else 
+        {
+            alert("Bem vindo "+seuNome+", neste ano você completa "+idade+" anos, portanto é menor de idade.")
+        } 
+	}  
+    function converte() 
+    {
+        //O comando getElementById nos retorna um elemento do HTML 
+        var temperatura = Number(document.getElementById("temperatura").value)
+        var resultado = 0
+        // O comando 'checked' faz com que o codigo verifique se o 'input' de determinado id está checado//
+        if(document.getElementById("cf").checked)
+        {
+            resultado = temperatura * (9/5) + 32
+        }
+        // O comando 'else if' sognifica se senão. é utilizado quando o comando 'if' já foi utilizado, mas o outro comando ainda tem um condição//
+        else if(document.getElementById("ck").checked)
+        {
+            resultado = temperatura + 273.15
+        }
+        else if(document.getElementById("fc").checked)
+        {
+            resultado = (temperatura - 32) * (5/9)
+        }
+        else if(document.getElementById("fk").checked)
+        {
+            resultado = (temperatura - 32) * (5/9) + 273.15 
+        }
+        else if(document.getElementById("kc").checked)
+        {
+            resultado = temperatura - 273.15
+        }
+        else if(document.getElementById("kf").checked)
+        {
+            resultado = (temperatura - 273.15) * (9/5) + 32
+        }
+        document.getElementById("resultado").innerHTML = resultado
+
+    }   
+</script>
