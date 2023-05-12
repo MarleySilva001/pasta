@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefa Array</title>
+</head>
+<body>
+    <h1>Usando o comando array</h1><br>
+    <p></p>
+    <button onclick="array002()" style="background-color: aquamarine;"> Clique aqui!</button>
+    <script>
+        function array002(){
+            var silva = []
+            silva.push("Marley")
+            silva.push("Silva")
+            silva.push("Milsinho")
+            alert(silva)
+            silva[1] = "Silvia"
+            alert(silva)
+            var posicao = silva.indexOf("Silvia")
+            silva.splice(2,1)
+            alert(silva)
+        }
+    </script>
+</body>
+</html>
